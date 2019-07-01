@@ -1,24 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex);
+Vue.use(Vuex); // vue 에 등록
 
-export function createStore(){
-  return new Vuex.Store({
-    modules: {
+export default new Vuex.Store({
 
+    state: { // 변수를 저장하는 것
+        token: null
     },
-    state: {
 
-    },
-    getters: {
+    mutations: { // 변수를 조작하는 함수
 
-    },
-    actions: {
+      increment(state){
 
-    },
-    mutations: {
+      },
+      decrement(state){
+
+      }
 
     }
-  });
-}
+});

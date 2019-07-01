@@ -1,13 +1,13 @@
 <template>
     <div>
         <h2 class="logo">Note</h2>
-        <div class="sub-text-aling">
+        <div class="sub-text-aling" id="testPath">
             <h1 class="sub-title">글씨 쓰는 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />사람 .</h1>
             <h4 class="sub-title-small">
                 꿈은 머리속에 머물러있는 명사가 아니라 <br />
                 다리로 발품을 팔고, 손으로 움직이는 동사입니다.
             </h4>
-            <b-button pill class="button-aling" @click="login()">Login</b-button>
+            <b-button pill class="button-aling"><a :href="path">Login</a></b-button>
             <router-link to="/signup"><b-button pill class="button-aling sign-up">Signup</b-button></router-link>
         </div>
         <div class="thumbnail-wrapper">
@@ -19,30 +19,19 @@
 <script>
   export default {
     name: 'MainPage',
-    methods: {
-      login: function () {
-      //   this.$auth.login({ email, password }).then(function () {
-      //   alert('로그인 성공');
-      //   })
-
-        this.$auth.get()
-          .then(authCode => {
-            //on success
-            return this.$http.post('http://your-backend-server.com/auth/google', { code: authCode, redirect_uri: 'postmessage' })
-          })
-          .then(response => {
-            //and then
-          })
-          .catch(error => {
-            //on fail do something
-          });
+    data(){
+      return {
+        path: 'http://34.97.179.121/oauth/authorize?client_id=testId3&redirect_uri=http://localhost:8081/callback&response_type=code&scope=read'
       }
+    },
+    methods: {
 
     }
   }
 </script>
 
 <style lang="scss" scoped>
+
     .logo {
         font-size: -webkit-xxx-large;
         margin-left: 5%;
