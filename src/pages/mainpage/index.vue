@@ -7,7 +7,7 @@
                 꿈은 머리속에 머물러있는 명사가 아니라 <br />
                 다리로 발품을 팔고, 손으로 움직이는 동사입니다.
             </h4>
-            <b-button pill class="button-aling"><a :href="path">Login</a></b-button>
+            <a :href="path"><b-button pill class="button-aling">Login</b-button></a>
             <router-link to="/signup"><b-button pill class="button-aling sign-up">Signup</b-button></router-link>
         </div>
         <div class="thumbnail-wrapper">
@@ -21,7 +21,7 @@
     name: 'MainPage',
     data(){
       return {
-        path: 'http://34.97.179.121/oauth/authorize?client_id=testId3&redirect_uri=http://localhost:8081/callback&response_type=code&scope=read'
+        path: 'http://34.97.179.121/oauth/authorize?client_id=noteClientAuth&redirect_uri=http://localhost:8081/auth&response_type=code&scope=read'
       }
     },
     methods: {

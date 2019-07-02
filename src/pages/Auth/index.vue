@@ -5,28 +5,34 @@
 
   export default {
     name: 'Auth',
-    data(){
-           return{
-               req: window.location.pathname
-           }
-    },
-    watch:{
-            req: function () {
-                    let path = window.location.pathname;
-                    let pathArr = path.split('&');
+    methods: {
+      init(){
 
-                    // path code 값을 가져와 보내기
-                    this.$http.post('http://34.97.179.121/oauth/access_token', {
-                            params: pathArr[1]
-                    })
-                    .then(res => {
-                            console.log(res);
-                            this.$store.state.token = res;
-                    })
-                    .catch(err => {
-                            console.log(err);
-                    })
-            }
+        let path = window.location.href;
+        let pathArr = path.split('=');
+
+        // path code 값을 가져와 보내기
+        this.$http.post('http://34.97.179.121/oauth/access_token', {
+          grant_type: 'authorization_code',
+          code: pathArr[1],
+          client_id: 'noteClientAuth',
+          scope: 'read',
+          client_secret: 'testSecret3',
+          redirect_uri: 'http://localhost:8081/auth'
+        })
+          .then(res => {
+            this.$store.state.token = res;
+          })
+          .catch(err => {
+            console.log(err);
+          })
+
+      }
+
+    },
+    created(){
+        this.init();
+
     }
   }
 </script>
